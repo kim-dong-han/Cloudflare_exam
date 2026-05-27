@@ -23,7 +23,7 @@ interface MatchData {
   };
 }
 
-const WORKER_URL = ''; // Leave empty for same-domain calls or set your worker URL here
+const WORKER_URL = import.meta.env.VITE_WORKER_URL || ''; // Set via environment variable during build
 
 function App() {
   const [search, setSearch] = useState('')

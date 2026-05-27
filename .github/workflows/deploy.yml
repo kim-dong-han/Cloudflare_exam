@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare
 
 on:
   push:
@@ -10,18 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Install dependencies
+
+      - name: Install Frontend Dependencies
         run: |
           cd frontend
           npm install
-          
-      - name: Build frontend
+
+      - name: Build Frontend
         run: |
           cd frontend
+          # VITE_WORKER_URL will be used in the build process
+          # Make sure to add this secret in GitHub Actions
           npm run build
-          
-      - name: Deploy to Cloudflare Pages
+        env:
+          VITE_WORKER_URL: ${{ secrets.VITE_WORKER_URL }}
+
+      - name: Deploy Frontend to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -29,3 +33,10 @@ jobs:
           projectName: lol-match-history-frontend
           directory: frontend/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy Worker to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: 'worker'
