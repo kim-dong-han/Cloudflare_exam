@@ -1,0 +1,121 @@
+:root {
+  --bg-color: #010a13;
+  --card-bg: #0a1428;
+  --text-color: #f0e6d2;
+  --accent-color: #c8aa6e;
+  --accent-hover: #785a28;
+  --win-color: #28344e;
+  --loss-color: #59343b;
+  --win-border: #0078ff;
+  --loss-border: #ff4e50;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+input {
+  background: var(--card-bg);
+  border: 1px solid var(--accent-color);
+  color: var(--text-color);
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+.summoner-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 5px solid var(--accent-color);
+}
+
+.profile-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+}
+
+.match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.match-card {
+  display: grid;
+  grid-template-columns: 100px 150px 1fr 150px;
+  align-items: center;
+  padding: 15px;
+  border-radius: 4px;
+  gap: 15px;
+}
+
+.match-card.win {
+  background: var(--win-color);
+  border-left: 5px solid var(--win-border);
+}
+
+.match-card.loss {
+  background: var(--loss-color);
+  border-left: 5px solid var(--loss-border);
+}
+
+.match-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.kda {
+  font-weight: bold;
+}
+
+.items {
+  display: flex;
+  gap: 4px;
+}
+
+.item-icon {
+  width: 25px;
+  height: 25px;
+  background: #000;
+  border-radius: 2px;
+}

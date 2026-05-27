@@ -1,0 +1,7 @@
+name: lol-match-history
+
+main = "index.ts"
+compatibility_date = "2024-05-27"
+
+[vars]
+# RIOT_API_KEY should be set as a secret in Cloudflare Dashboard
